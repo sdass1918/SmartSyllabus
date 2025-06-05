@@ -1,12 +1,5 @@
-"use client";
-import ClientPage from "./components/ClientPage";
-import { Provider } from "react-redux";
-import store from "./store/store";
+import Home from "./components/Home";
 
-export default function Home(children: React.ReactNode) {
-  return (
-    <Provider store={store}>
-      <ClientPage />
-    </Provider>
-  );
+export default function Page() {
+  return <Home />;
 }

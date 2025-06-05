@@ -1,6 +1,7 @@
 // Chapterlist.tsx
 "use client";
 import React from "react";
+import { RootState } from "../store/store";
 import { useDispatch, useSelector } from "react-redux";
 import chaptersData from "../data/mockChapters.json";
 import { getRandomIcon } from "../lib/getIcons";
@@ -21,13 +22,16 @@ const chapters: Chapter[] = chaptersData;
 
 export default function ChapterList() {
   const dispatch = useDispatch();
-  const { subject, filters } = useSelector((state: any) => state.filters);
+  const { subject, filters } = useSelector((state: RootState) => state.filters);
   const {
     weakOnly,
     status,
     class: selectedClasses,
     units: selectedUnits,
-  } = filters;
+  } = filters as typeof filters & {
+    class: string[];
+    units: string[];
+  };
 
   const filteredChapters = chapters.filter((chapter) => {
     const matchesSubject = chapter.subject === subject;

@@ -1,15 +1,16 @@
 "use client";
 
 import ChapterList from "./Chapterlist";
+import { RootState } from "../store/store";
 import FilterBar from "./Filterbar";
 import Sidebar from "./Sidebar";
 import DarkModeToggle from "./DarkModeToggle";
 import { useSelector } from "react-redux";
 
-export default function clientPage() {
-  const subject = useSelector((state: any) => state.filters.subject);
+export default function ClientPage() {
+  const subject = useSelector((state: RootState) => state.filters.subject);
   const filteredLength = useSelector(
-    (state: any) => state.filters.filteredLength
+    (state: RootState) => state.filters.filteredLength
   );
   return (
     <main className="min-h-screen flex flex-col sm:flex-row bg-white dark:bg-black text-black dark:text-white">

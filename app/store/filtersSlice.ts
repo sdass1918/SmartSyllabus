@@ -5,8 +5,8 @@ const initialState = {
   filteredLength: 0,
   subject: "Physics",
   filters: {
-    class: [],
-    units: [],
+    class: [] as string[],
+    units: [] as string[],
     status: "",
     weakOnly: false,
   },

@@ -1,6 +1,7 @@
 // FilterBar.tsx
 "use client";
 import { Button } from "./ui/button";
+import { RootState } from "../store/store";
 import { useDispatch, useSelector } from "react-redux";
 import {
   toggleWeak,
@@ -13,7 +14,7 @@ import chaptersData from "../data/mockChapters.json";
 
 export default function FilterBar() {
   const dispatch = useDispatch();
-  const { subject, filters } = useSelector((state: any) => state.filters);
+  const { subject, filters } = useSelector((state: RootState) => state.filters);
   const {
     weakOnly,
     status,
@@ -25,17 +26,17 @@ export default function FilterBar() {
 
   const uniqueClasses = useMemo(
     () => [...new Set(filteredChapters.map((c) => c.class))],
-    [subject]
+    [filteredChapters]
   );
   const uniqueUnits = useMemo(
     () => [...new Set(filteredChapters.map((c) => c.unit))],
-    [subject]
+    [filteredChapters]
   );
 
   const toggleMultiSelect = (
     value: string,
     selected: string[],
-    setAction: (payload: string[]) => any
+    setAction: (payload: string[]) => any // Accepts a function returning an action object
   ) => {
     const updated = selected.includes(value)
       ? selected.filter((v) => v !== value)

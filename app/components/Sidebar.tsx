@@ -1,7 +1,8 @@
 // components/Sidebar.tsx
 "use client";
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+//import { RootState } from "../store/store"; // Adjust the import path as necessary
+import { useDispatch } from "react-redux";
 import { Book, FlaskConical, Calculator } from "lucide-react";
 
 type SidebarProps = {
@@ -16,7 +17,7 @@ const iconMap: Record<string, React.ReactElement> = {
 
 export default function Sidebar({ onSelectSubject }: SidebarProps) {
   const dispatch = useDispatch();
-  const subject = useSelector((state: any) => state.filters.subject);
+  //const subject = useSelector((state: RootState) => state.filters.subject);
   const [active, setActive] = useState("Physics");
 
   const subjects = ["Physics", "Chemistry", "Mathematics"];
