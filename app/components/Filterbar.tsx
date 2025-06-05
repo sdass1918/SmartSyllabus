@@ -36,7 +36,7 @@ export default function FilterBar() {
   const toggleMultiSelect = (
     value: string,
     selected: string[],
-    setAction: (payload: string[]) => any // Accepts a function returning an action object
+    setAction: (payload: string[]) => { type: string; payload: string[] } // Accepts a function returning an action object
   ) => {
     const updated = selected.includes(value)
       ? selected.filter((v) => v !== value)
